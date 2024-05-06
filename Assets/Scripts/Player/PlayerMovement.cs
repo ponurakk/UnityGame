@@ -15,6 +15,10 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        rb.MovePosition(new Vector2(transform.position.x, transform.position.y) + input * Time.deltaTime * speed);
+        Vector2 newPosition = new Vector2(transform.position.x, transform.position.y) + input * Time.deltaTime * speed;
+        if (newPosition.y < 20 && newPosition.y > -20)
+        {
+            rb.MovePosition(new Vector2(transform.position.x, transform.position.y) + input * Time.deltaTime * speed);
+        }
     }
 }
