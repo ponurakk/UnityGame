@@ -1,24 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
-public class EnemyManager : MonoBehaviour
+public abstract class EnemyManager : MonoBehaviour
 {
-    public GameObject playerObject;
-    public float attackDamage;
-    public float attackSpeed;
+    [SerializeField] protected GameObject playerObject;
+    [SerializeField] protected float attackDamage;
+    [SerializeField] protected float attackSpeed;
 
-    [SerializeField]
-    private float timer;
+    [SerializeField] private float timer;
+    public AIPath aIPath;
 
     void Start()
     {
         timer = attackSpeed;
+        onStart();
     }
+
+    protected abstract void onStart();
 
     void Update()
     {
         timer += Time.deltaTime;
+
+        if (aIPath.desiredVelocity.x >= 0.01f)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else if (aIPath.desiredVelocity.x <= -0.01f)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+
+        onUpdate();
+    }
+
+    protected abstract void onUpdate();
+
+    protected void loadSprites(string spritePath)
+    {
+        GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(spritePath);
+        GetComponent<Animator>().runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>(spritePath);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
