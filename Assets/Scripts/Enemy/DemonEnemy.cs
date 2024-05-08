@@ -7,6 +7,7 @@ public class DemonEnemy : EnemyManager
         attackDamage = 0.3f;
         attackSpeed = 0.3f;
         aIPath.maxSpeed = 5;
+        health = 5;
         float enemyType = Random.Range(0, 8);
         switch (enemyType)
         {

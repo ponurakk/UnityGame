@@ -6,6 +6,7 @@ public abstract class EnemyManager : MonoBehaviour
     [SerializeField] protected GameObject playerObject;
     [SerializeField] protected float attackDamage;
     [SerializeField] protected float attackSpeed;
+    [SerializeField] protected float health;
 
     [SerializeField] private float timer;
     public AIPath aIPath;
@@ -31,6 +32,12 @@ public abstract class EnemyManager : MonoBehaviour
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
+
+        if (health <= 0f)
+        {
+            Destroy(gameObject);
+            playerObject.GetComponent<EnemySpawner>().enemyCount--;
+        }
     }
 
     public void loadPlayerObject(GameObject player)
@@ -43,6 +50,12 @@ public abstract class EnemyManager : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(spritePath);
         GetComponent<Animator>().runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>(spritePath);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        if (health >= damage) { health -= damage; }
+        else { health = 0; }
     }
 
     void OnTriggerEnter2D(Collider2D collider)
