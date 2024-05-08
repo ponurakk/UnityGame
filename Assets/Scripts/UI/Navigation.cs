@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Navigation : MonoBehaviour
-{
+public class Navigation : MonoBehaviour {
     public void play()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Map#1");
     }
     public void quit()
     {
