@@ -69,4 +69,15 @@ public abstract class EnemyManager : MonoBehaviour
     {
         timer = attackSpeed;
     }
+
+    void OnMouseOver()
+    {
+        Texture2D cursor = Resources.Load<Texture2D>("Cursors/Cursor_Attack");
+        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
+    }
+
+    void OnMouseExit()
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+    }
 }
