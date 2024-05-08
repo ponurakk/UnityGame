@@ -10,12 +10,14 @@ public abstract class EnemyManager : MonoBehaviour
 
     [SerializeField] private float timer;
     public AIPath aIPath;
+    public GameObject expObject;
 
     void Start()
     {
         timer = attackSpeed;
         aIPath = GetComponent<AIPath>();
         onStart();
+        expObject = Resources.Load<GameObject>("Prefabs/Points");
     }
 
     protected abstract void onStart();
@@ -36,6 +38,12 @@ public abstract class EnemyManager : MonoBehaviour
         if (health <= 0f)
         {
             Destroy(gameObject);
+
+            int rand = Random.Range(0, 2);
+            if (rand == 1)
+            {
+                Instantiate(expObject, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+            }
             playerObject.GetComponent<EnemySpawner>().enemyCount--;
         }
     }
