@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 movement;
+    private bool isRight;
 
     void Start()
     {
@@ -20,6 +19,15 @@ public class PlayerMovement : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
         movement = new Vector2(moveX, moveY).normalized;
+
+        if (movement.x < 0)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f); // Flip sprite horizontally
+        }
+        else if (movement.x > 0)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f); // Restore original scale
+        }
     }
 
     void FixedUpdate()

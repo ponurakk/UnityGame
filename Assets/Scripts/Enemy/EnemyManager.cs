@@ -6,6 +6,7 @@ public abstract class EnemyManager : MonoBehaviour
     [SerializeField] protected GameObject playerObject;
     [SerializeField] protected float attackDamage;
     [SerializeField] protected float attackSpeed;
+    [SerializeField] protected float health;
 
     [SerializeField] private float timer;
     public AIPath aIPath;
@@ -13,6 +14,7 @@ public abstract class EnemyManager : MonoBehaviour
     void Start()
     {
         timer = attackSpeed;
+        aIPath = GetComponent<AIPath>();
         onStart();
     }
 
@@ -24,22 +26,36 @@ public abstract class EnemyManager : MonoBehaviour
 
         if (aIPath.desiredVelocity.x >= 0.01f)
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
         else if (aIPath.desiredVelocity.x <= -0.01f)
         {
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
 
-        onUpdate();
+        if (health <= 0f)
+        {
+            Destroy(gameObject);
+            playerObject.GetComponent<EnemySpawner>().enemyCount--;
+        }
     }
 
-    protected abstract void onUpdate();
+    public void loadPlayerObject(GameObject player)
+    {
+        playerObject = player;
+        GetComponent<AIDestinationSetter>().target = playerObject.transform;
+    }
 
     protected void loadSprites(string spritePath)
     {
         GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(spritePath);
         GetComponent<Animator>().runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>(spritePath);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        if (health >= damage) { health -= damage; }
+        else { health = 0; }
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -65,5 +81,16 @@ public abstract class EnemyManager : MonoBehaviour
     void OnTriggerLeave2D(Collider2D collider)
     {
         timer = attackSpeed;
+    }
+
+    void OnMouseOver()
+    {
+        Texture2D cursor = Resources.Load<Texture2D>("Cursors/Cursor_Attack");
+        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
+    }
+
+    void OnMouseExit()
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 }
