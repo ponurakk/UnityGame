@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class EnemySpawner : MonoBehaviour
 {
 
+
     [SerializeField]
     private GameObject enemyPrefab;
 
@@ -41,7 +42,8 @@ public class EnemySpawner : MonoBehaviour
 
 
             Instantiate(enemyPrefab, new Vector2(transform.position.x + 15, transform.position.y + Random.Range(-10,10)), Quaternion.identity);
-
+            Instantiate(enemyPrefab, new Vector2(transform.position.x - 15, transform.position.y + Random.Range(-10, 10)), Quaternion.identity);
+            
             SetTimeUntilSpawn();
         }
     }
