@@ -13,6 +13,7 @@ public abstract class EnemyManager : MonoBehaviour
     void Start()
     {
         timer = attackSpeed;
+        aIPath = GetComponent<AIPath>();
         onStart();
     }
 
@@ -24,17 +25,19 @@ public abstract class EnemyManager : MonoBehaviour
 
         if (aIPath.desiredVelocity.x >= 0.01f)
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
         else if (aIPath.desiredVelocity.x <= -0.01f)
         {
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
-
-        onUpdate();
     }
 
-    protected abstract void onUpdate();
+    public void loadPlayerObject(GameObject player)
+    {
+        playerObject = player;
+        GetComponent<AIDestinationSetter>().target = playerObject.transform;
+    }
 
     protected void loadSprites(string spritePath)
     {
