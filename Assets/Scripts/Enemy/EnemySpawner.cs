@@ -34,7 +34,6 @@ public class EnemySpawner : MonoBehaviour
             GameObject enemy = Instantiate(enemyPrefab, new Vector2(transform.position.x + randomX, transform.position.y + randomY), Quaternion.identity);
             enemy.AddComponent<DemonEnemy>();
             enemy.GetComponent<EnemyManager>().loadPlayerObject(this.gameObject);
-
             SetTimeUntilSpawn();
         }
     }
