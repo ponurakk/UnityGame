@@ -1,9 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-using UnityEngine.UI;
 
 public class PlayerLevel : MonoBehaviour
 {
@@ -15,26 +11,14 @@ public class PlayerLevel : MonoBehaviour
 
     public GameObject panel;
 
-    public float playerSpeed;
-    public float playerDamage;
-    public float playerHealth;
-
-    PlayerManager playerH;
-    PlayerMovement playerS;
-
     void Start()
     {
-        playerH = GetComponent<PlayerManager>();
-        playerS = GetComponent<PlayerMovement>();
 
         panel.SetActive(false);
-        
+
         playerLevel = 1;
         playerExp = 0;
         maxPlayerExp = 25;
-
-        playerHealth = playerH.health;
-        playerSpeed = playerS.moveSpeed;
 
         //Time.timeScale = 1;
     }
@@ -42,12 +26,12 @@ public class PlayerLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerExp >= maxPlayerExp) 
+        if (playerExp >= maxPlayerExp)
         {
             playerLevel++;
             playerExp = 0;
             maxPlayerExp = Math.Round(maxPlayerExp * 1.25, 0);
-            Time.timeScale = 0; 
+            Time.timeScale = 0;
             panel.SetActive(true);
         }
     }
@@ -63,21 +47,21 @@ public class PlayerLevel : MonoBehaviour
 
     public void DamageBoost()
     {
-        playerDamage = playerDamage * 1.25f;
+        GetComponent<PlayerManager>().attackStrength = GetComponent<PlayerManager>().attackStrength * 1.25f;
         Time.timeScale = 1;
         panel.SetActive(false);
     }
 
     public void SpeedBoost()
     {
-        playerSpeed = playerSpeed * 1.05f;
+        GetComponent<PlayerMovement>().moveSpeed = GetComponent<PlayerMovement>().moveSpeed * 1.05f;
         Time.timeScale = 1;
         panel.SetActive(false);
     }
 
     public void HealthBoost()
     {
-        playerHealth = playerHealth * 1.05f;
+        GetComponent<PlayerManager>().health = GetComponent<PlayerManager>().health * 1.05f;
         Time.timeScale = 1;
         panel.SetActive(false);
     }

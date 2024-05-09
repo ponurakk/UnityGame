@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
     public float health;
+    public float attackStrength;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        health = 20f;
+        attackStrength = 1f;
     }
 
     // Update is called once per frame
