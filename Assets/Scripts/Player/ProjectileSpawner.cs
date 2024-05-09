@@ -4,6 +4,7 @@ public class ProjectileSpawner : MonoBehaviour
 {
     public GameObject projectilePrefab;
     public Transform spawnPoint;
+    public AudioSource spawnSound;
 
     [SerializeField] private float timer;
 
@@ -23,6 +24,7 @@ public class ProjectileSpawner : MonoBehaviour
             newProjectile.GetComponent<Projectile>().SetDirection(direction);
             newProjectile.GetComponent<Projectile>().SetDamage(GetComponent<PlayerManager>().attackStrength);
             timer = 0f;
+            spawnSound.Play();
         }
     }
 }

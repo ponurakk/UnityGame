@@ -37,6 +37,10 @@ public abstract class EnemyManager : MonoBehaviour
 
         if (health <= 0f)
         {
+            AudioSource audio = GetComponent<AudioSource>();
+            audio.clip = Resources.Load<AudioClip>("Clips/bone-crack-121580");
+            audio.Play();
+
             Destroy(gameObject);
 
             int rand = Random.Range(0, 2);
