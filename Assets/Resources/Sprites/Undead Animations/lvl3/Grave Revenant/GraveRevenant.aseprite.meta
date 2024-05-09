@@ -121,26 +121,6 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: GraveRevenant_Frame_0
-    originalName: 
-    pivot: {x: 0.5, y: -0.06666667}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 28
-      width: 10
-      height: 15
-    spriteID: 32db431c399010c44ad248fa67524d9d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 28}
   - name: GraveRevenant_Frame_1
     originalName: 
     pivot: {x: 0.5, y: 0}
@@ -201,6 +181,26 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 22, y: 27}
+  - name: GraveRevenant_Frame_0
+    originalName: 
+    pivot: {x: 0.5, y: -0.06666667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 28
+      width: 10
+      height: 15
+    spriteID: 7ecb320926f2c814a971d1b02d049b58
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 28}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
