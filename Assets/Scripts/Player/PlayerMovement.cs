@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
-{
+public class PlayerMovement : MonoBehaviour {
+    public int speed;
+
     public float moveSpeed = 5.5f;
     public LayerMask wallLayerMask;
-
     private Rigidbody2D rb;
     private Vector2 movement;
     private bool isRight;
