@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PlayerLevel : MonoBehaviour
 {
-
+    public AudioSource seffect;
     public int playerLevel;
     public int playerExp;
     [SerializeField]
@@ -49,6 +49,7 @@ public class PlayerLevel : MonoBehaviour
     {
         if (collision.tag == "Exp")
         {
+            seffect.Play();
             playerExp += 5;
             Destroy(collision.gameObject);
         }

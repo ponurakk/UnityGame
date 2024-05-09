@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
     public float attackStrength;
     
     public Slider healthSlider;
+    public GameObject deathScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,9 @@ public class PlayerManager : MonoBehaviour
 
         healthSlider.value = health;
         healthSlider.maxValue = health;
+        
+        Time.timeScale = 1;
+        deathScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -28,8 +32,8 @@ public class PlayerManager : MonoBehaviour
 
         if (health <= 0)
         {
-            Debug.Log("ded");
-            return;
+            Time.timeScale = 0;
+            deathScreen.SetActive(true);
         }
     }
 
