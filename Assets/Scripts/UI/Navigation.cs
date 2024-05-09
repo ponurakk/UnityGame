@@ -8,6 +8,11 @@ public class Navigation : MonoBehaviour {
     {
         SceneManager.LoadScene("Map#1");
     }
+
+    public void MainMenu() {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void quit()
     {
         Application.Quit();
