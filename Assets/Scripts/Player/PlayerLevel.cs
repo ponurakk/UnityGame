@@ -1,15 +1,19 @@
 using System;
 using UnityEngine;
 
+
+using UnityEngine.UI;
 public class PlayerLevel : MonoBehaviour
 {
 
     public int playerLevel;
     public int playerExp;
     [SerializeField]
-    private double maxPlayerExp;
+    private float maxPlayerExp;
 
     public GameObject panel;
+
+    public Slider expSlider;
 
     void Start()
     {
@@ -18,7 +22,10 @@ public class PlayerLevel : MonoBehaviour
 
         playerLevel = 1;
         playerExp = 0;
-        maxPlayerExp = 25;
+        maxPlayerExp = 25f;
+
+        expSlider.value = playerExp;
+        expSlider.maxValue = maxPlayerExp;
 
         //Time.timeScale = 1;
     }
@@ -26,13 +33,15 @@ public class PlayerLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        expSlider.value = playerExp;
         if (playerExp >= maxPlayerExp)
         {
             playerLevel++;
             playerExp = 0;
-            maxPlayerExp = Math.Round(maxPlayerExp * 1.25, 0);
+            maxPlayerExp = (float)Math.Round(maxPlayerExp * 1.25f, 0);
             Time.timeScale = 0;
             panel.SetActive(true);
+            expSlider.maxValue = maxPlayerExp;
         }
     }
 

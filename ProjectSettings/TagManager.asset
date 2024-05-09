@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Exp
   - Weapon
+  - heart
   layers:
   - Default
   - TransparentFX
