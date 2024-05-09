@@ -152,7 +152,7 @@ ScriptedImporter:
       y: 4
       width: 10
       height: 15
-    spriteID: 82fd74960cdfeb84bae324f15feeb466
+    spriteID: eba545aa5f0bd554db8e3a1b644ea78e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -172,7 +172,7 @@ ScriptedImporter:
       y: 4
       width: 10
       height: 16
-    spriteID: afef294a8cec9834595b53f183cc3c27
+    spriteID: e5ec36ea55a3101438d6befd768be16a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -192,7 +192,7 @@ ScriptedImporter:
       y: 27
       width: 10
       height: 15
-    spriteID: be75695e1001b6d4481d38f1b08deb97
+    spriteID: 02b6475ca8ac54a458bb8340aca824c9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -217,7 +217,7 @@ ScriptedImporter:
         y: 1
         width: 10
         height: 15
-      spriteId: 32db431c399010c44ad248fa67524d9d
+      spriteId: 7ecb320926f2c814a971d1b02d049b58
     - name: GraveRevenant_Frame_1
       frameIndex: 1
       cellRect:
@@ -225,7 +225,7 @@ ScriptedImporter:
         y: 0
         width: 10
         height: 15
-      spriteId: 82fd74960cdfeb84bae324f15feeb466
+      spriteId: eba545aa5f0bd554db8e3a1b644ea78e
     - name: GraveRevenant_Frame_2
       frameIndex: 2
       cellRect:
@@ -233,7 +233,7 @@ ScriptedImporter:
         y: 0
         width: 10
         height: 16
-      spriteId: afef294a8cec9834595b53f183cc3c27
+      spriteId: e5ec36ea55a3101438d6befd768be16a
     - name: GraveRevenant_Frame_3
       frameIndex: 3
       cellRect:
@@ -241,7 +241,7 @@ ScriptedImporter:
         y: 0
         width: 10
         height: 15
-      spriteId: be75695e1001b6d4481d38f1b08deb97
+      spriteId: 02b6475ca8ac54a458bb8340aca824c9
     linkedCells: []
     parentIndex: -1
   platformSettings: []
